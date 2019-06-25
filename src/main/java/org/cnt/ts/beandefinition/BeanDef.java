@@ -1,9 +1,11 @@
 package org.cnt.ts.beandefinition;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,12 +23,32 @@ public class BeanDef {
 	}
 	
 	public void showBeanDef() {
+		showBeanDefNames();
+		showBeanDefObject();
+	}
+	
+	public void showBeanDefNames() {
 		int bdCount = cac.getBeanDefinitionCount();
 		String[] bdNames = cac.getBeanDefinitionNames();
 		log.info("bdCount = {}", bdCount);
 		log.info("bdNames =>");
 		Stream.of(bdNames).forEach(bdName -> log.info(bdName));
-		String[] aliases = cac.getAliases("littleMing");
-		log.info("aliases = {}", Arrays.asList(aliases));
+	}
+	
+	public void showBeanDefObject() {
+		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
+		log.info("bdObjects =>");
+		BeanDefinition bossBD = clbf.getBeanDefinition("boss");
+		log.info("bossBD = {}, class = {}", bossBD, bossBD.getClass());
+		BeanDefinition companyBD = clbf.getBeanDefinition("company");
+		log.info("companyBD = {}, class = {}", companyBD, companyBD.getClass());
+		BeanDefinition littleMingBD = clbf.getBeanDefinition("littleMing");
+		log.info("littleMingBD = {}, class = {}", littleMingBD, littleMingBD.getClass());
+		BeanDefinition littleQiangBD = clbf.getBeanDefinition("littleQiang");
+		log.info("littleQiangBD = {}, class = {}", littleQiangBD, littleQiangBD.getClass());
+		
+		log.info("littleMingBD == littleQiangBD => {}", littleMingBD == littleQiangBD);
+		log.info("littleMingBD equals littleQiangBD => {}", littleMingBD.equals(littleQiangBD));
 	}
 }
