@@ -40,15 +40,15 @@ public class BeanDef {
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdObjects =>");
 		BeanDefinition bossBD = clbf.getBeanDefinition("boss");
-		log.info("bossBD = {}, class = {}", bossBD, bossBD.getClass());
+		log.info("bossBD = {}, -> {}", bossBD, bossBD.getClass());
 		BeanDefinition companyBD = clbf.getBeanDefinition("company");
-		log.info("companyBD = {}, class = {}", companyBD, companyBD.getClass());
+		log.info("companyBD = {}, -> {}", companyBD, companyBD.getClass());
 		BeanDefinition littleMingBD = clbf.getBeanDefinition("littleMing");
-		log.info("littleMingBD = {}, class = {}", littleMingBD, littleMingBD.getClass());
+		log.info("littleMingBD = {}, -> {}", littleMingBD, littleMingBD.getClass());
 		BeanDefinition littleQiangBD = clbf.getBeanDefinition("littleQiang");
-		log.info("littleQiangBD = {}, class = {}", littleQiangBD, littleQiangBD.getClass());
+		log.info("littleQiangBD = {}, -> {}", littleQiangBD, littleQiangBD.getClass());
 		
-		log.info("littleMingBD == littleQiangBD => {}", littleMingBD == littleQiangBD);
-		log.info("littleMingBD equals littleQiangBD => {}", littleMingBD.equals(littleQiangBD));
+		log.info("littleMingBD == littleQiangBD -> {}", littleMingBD == littleQiangBD);
+		log.info("littleMingBD equals littleQiangBD -> {}", littleMingBD.equals(littleQiangBD));
 	}
 }
