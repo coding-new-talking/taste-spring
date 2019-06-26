@@ -1,7 +1,9 @@
 package org.cnt.ts.beandefinition;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -25,6 +27,7 @@ public class BeanDef {
 	public void showBeanDef() {
 		showBeanDefNames();
 		showBeanDefObject();
+		showBeanAnnotation();
 	}
 	
 	public void showBeanDefNames() {
@@ -50,5 +53,23 @@ public class BeanDef {
 		
 		log.info("littleMingBD == littleQiangBD -> {}", littleMingBD == littleQiangBD);
 		log.info("littleMingBD equals littleQiangBD -> {}", littleMingBD.equals(littleQiangBD));
+	}
+	
+	public void showBeanAnnotation() {
+		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
+		log.info("bdAnnotation =>");
+		AnnotatedBeanDefinition bossBD = (AnnotatedBeanDefinition)clbf.getBeanDefinition("boss");
+		Map<String, Object> bossAnno = bossBD.getMetadata().getAnnotationAttributes("org.springframework.stereotype.Component");
+		log.info("bossAnno = {}", bossAnno);
+		AnnotatedBeanDefinition companyBD = (AnnotatedBeanDefinition)clbf.getBeanDefinition("company");
+		Map<String, Object> companyAnno = companyBD.getMetadata().getAnnotationAttributes("org.springframework.context.annotation.Configuration");
+		log.info("companyAnno = {}", companyAnno);
+		AnnotatedBeanDefinition littleMingBD = (AnnotatedBeanDefinition)clbf.getBeanDefinition("littleMing");
+		Map<String, Object> littleMingAnno = littleMingBD.getFactoryMethodMetadata().getAnnotationAttributes("org.springframework.context.annotation.Bean");
+		log.info("littleMingAnno = {}", littleMingAnno);
+		AnnotatedBeanDefinition littleQiangBD = (AnnotatedBeanDefinition)clbf.getBeanDefinition("littleQiang");
+		Map<String, Object> littleQiangAnno = littleQiangBD.getFactoryMethodMetadata().getAnnotationAttributes("org.springframework.context.annotation.Bean");
+		log.info("littleQiangAnno = {}", littleQiangAnno);
 	}
 }
