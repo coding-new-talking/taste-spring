@@ -11,7 +11,7 @@ public class _AsmMain {
 	public static void main(String[] args) throws Exception {
 		ClassReader cr = new ClassReader(D.class.getName());
 		_ClassVisitor cv = new _ClassVisitor();
-		cr.accept(cv, ClassReader.SKIP_DEBUG);
+		cr.accept(cv, 0);
 	}
 
 }
