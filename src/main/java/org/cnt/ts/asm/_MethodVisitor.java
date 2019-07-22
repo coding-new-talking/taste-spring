@@ -11,26 +11,29 @@ import org.springframework.asm.TypePath;
  */
 public class _MethodVisitor extends MethodVisitor {
 
+	private int version;
+	
 	public _MethodVisitor() {
 		super(Opcodes.ASM7);
+		this.version = _AsmMain.getMvVersion();
 	}
 
 	@Override
 	public void visitParameter(String name, int access) {
-		log("-MethodVisitor-visitParameter-");
+		log("---MethodVisitor-visitParameter---");
 		log("name", name);
 		log("access", access);
 	}
 	
 	@Override
 	public AnnotationVisitor visitAnnotationDefault() {
-		log("-MethodVisitor-visitAnnotationDefault-");
+		log("---MethodVisitor-visitAnnotationDefault---");
 		return new _AnnotationVisitor();
 	}
 	
 	@Override
 	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-		log("-MethodVisitor-visitAnnotation-");
+		log("---MethodVisitor-visitAnnotation---");
 		log("descriptor", descriptor);
 		log("visible", visible);
 		return new _AnnotationVisitor();
@@ -38,14 +41,14 @@ public class _MethodVisitor extends MethodVisitor {
 	
 	@Override
 	public void visitAnnotableParameterCount(int parameterCount, boolean visible) {
-		log("-MethodVisitor-visitAnnotableParameterCount-");
+		log("---MethodVisitor-visitAnnotableParameterCount---");
 		log("parameterCount", parameterCount);
 		log("visible", visible);
 	}
 	
 	@Override
 	public AnnotationVisitor visitParameterAnnotation(int parameter, String descriptor, boolean visible) {
-		log("-MethodVisitor-visitParameterAnnotation-");
+		log("---MethodVisitor-visitParameterAnnotation---");
 		log("parameter", parameter);
 		log("descriptor", descriptor);
 		log("visible", visible);
@@ -54,19 +57,24 @@ public class _MethodVisitor extends MethodVisitor {
 	
 	@Override
 	public AnnotationVisitor visitTypeAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-		log("-MethodVisitor-visitTypeAnnotation-");
+		log("---MethodVisitor-visitTypeAnnotation---");
 		log("typeRef", typeRef);
 		log("typePath", typePath);
 		log("descriptor", descriptor);
 		log("visible", visible);
 		return new _AnnotationVisitor();
 	}
+	
+	@Override
+	public void visitEnd() {
+		log("---MethodVisitor-visitEnd---");
+	}
 
 	void log(String key, Object value) {
-		log(key + " = " + value);
+		System.out.println(key + " = " + value);
 	}
 	
-	void log(Object obj) {
-		System.out.println(obj);
+	void log(String str) {
+		System.out.println(str + version + "--");
 	}
 }

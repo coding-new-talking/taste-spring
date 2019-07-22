@@ -14,4 +14,27 @@ public class _AsmMain {
 		cr.accept(cv, 0);
 	}
 
+	static int avVersion = 0;
+	
+	static int cvVersion = 0;
+	
+	static int fvVersion = 0;
+	
+	static int mvVersion = 0;
+	
+	static int getAvVersion() {
+		return ++avVersion;
+	}
+	
+	static int getCvVersion() {
+		return ++cvVersion;
+	}
+	
+	static int getFvVersion() {
+		return ++fvVersion;
+	}
+	
+	static int getMvVersion() {
+		return ++mvVersion;
+	}
 }

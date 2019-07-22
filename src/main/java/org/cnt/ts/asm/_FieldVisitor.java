@@ -11,13 +11,16 @@ import org.springframework.asm.TypePath;
  */
 public class _FieldVisitor extends FieldVisitor {
 
+	private int version;
+	
 	public _FieldVisitor() {
 		super(Opcodes.ASM7);
+		this.version = _AsmMain.getFvVersion();
 	}
 	
 	@Override
 	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-		log("-FieldVisitor-visitAnnotation-");
+		log("---FieldVisitor-visitAnnotation---");
 		log("descriptor", descriptor);
 		log("visible", visible);
 		return new _AnnotationVisitor();
@@ -25,7 +28,7 @@ public class _FieldVisitor extends FieldVisitor {
 	
 	@Override
 	public AnnotationVisitor visitTypeAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-		log("-FieldVisitor-visitTypeAnnotation-");
+		log("---FieldVisitor-visitTypeAnnotation---");
 		log("typeRef", typeRef);
 		log("typePath", typePath);
 		log("descriptor", descriptor);
@@ -33,11 +36,16 @@ public class _FieldVisitor extends FieldVisitor {
 		return new _AnnotationVisitor();
 	}
 	
-	void log(String key, Object value) {
-		log(key + " = " + value);
+	@Override
+	public void visitEnd() {
+		log("---FieldVisitor-visitEnd---");
 	}
 	
-	void log(Object obj) {
-		System.out.println(obj);
+	void log(String key, Object value) {
+		System.out.println(key + " = " + value);
+	}
+	
+	void log(String str) {
+		System.out.println(str + version + "--");
 	}
 }

@@ -12,18 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
 /**
  * @author lixinjie
  * @since 2019-07-18
  */
-@Component("ddd")
+@Configuration("ddd")
 @ComponentScan(basePackages = {"a.b.c", "x.y.z"},
 scopedProxy = ScopedProxyMode.DEFAULT,
-includeFilters = {@Filter(classes = {Integer.class})})
-public class D<@Null String> extends C implements A, B {
+includeFilters = {@Filter(classes = Integer.class)})
+public class D<@Null T extends Number> extends C<@Valid Long, Date> implements A, B {
 
 	protected Long lon = Long.MAX_VALUE;
 	
@@ -32,11 +32,11 @@ public class D<@Null String> extends C implements A, B {
 	@Autowired(required = false)
 	private Date date;
 	
-	@Resource(name = "aaa")
+	@Resource(name = "aaa", lookup = "bbb")
 	private Map<@NotNull String, @Null Object> map;
 	
 	@Bean(name = {"cc", "dd"}, initMethod = "init")
-	public String str(@NotNull String sssss, @Null int iiiii, double dddd, @Valid long llll) throws Exception {
+	public String getStr(@NotNull String sssss, @Null int iiiii, double dddd, @Valid long llll) throws Exception {
 		return sssss;
 	}
 	

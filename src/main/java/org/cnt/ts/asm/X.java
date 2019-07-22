@@ -2,8 +2,8 @@ package org.cnt.ts.asm;
 
 /**
  * @author lixinjie
- * @since 2019-07-18
+ * @since 2019-07-22
  */
-public class C<T, V> implements Z {
+public interface X {
 
 }

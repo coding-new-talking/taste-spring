@@ -15,13 +15,16 @@ import org.springframework.asm.TypePath;
  */
 public class _ClassVisitor extends ClassVisitor {
 
+	private int version;
+	
 	public _ClassVisitor() {
 		super(Opcodes.ASM7);
+		this.version = _AsmMain.getCvVersion();
 	}
 
 	@Override
 	public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-		log("-ClassVisitor-visit-");
+		log("---ClassVisitor-visit---");
 		log("version", version);
 		log("access", access);
 		log("name", name);
@@ -32,7 +35,7 @@ public class _ClassVisitor extends ClassVisitor {
 	
 	@Override
 	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-		log("-ClassVisitor-visitAnnotation-");
+		log("---ClassVisitor-visitAnnotation---");
 		log("descriptor", descriptor);
 		log("visible", visible);
 		return new _AnnotationVisitor();
@@ -40,7 +43,7 @@ public class _ClassVisitor extends ClassVisitor {
 	
 	@Override
 	public AnnotationVisitor visitTypeAnnotation(int typeRef, TypePath typePath, String descriptor, boolean visible) {
-		log("-ClassVisitor-visitTypeAnnotation-");
+		log("---ClassVisitor-visitTypeAnnotation---");
 		log("typeRef", typeRef);
 		log("typePath", typePath);
 		log("descriptor", descriptor);
@@ -50,7 +53,7 @@ public class _ClassVisitor extends ClassVisitor {
 	
 	@Override
 	public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
-		log("-ClassVisitor-visitField-");
+		log("---ClassVisitor-visitField---");
 		log("access", access);
 		log("name", name);
 		log("descriptor", descriptor);
@@ -62,7 +65,7 @@ public class _ClassVisitor extends ClassVisitor {
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String descriptor, String signature,
 			String[] exceptions) {
-		log("-ClassVisitor-visitMethod-");
+		log("---ClassVisitor-visitMethod---");
 		log("access", access);
 		log("name", name);
 		log("descriptor", descriptor);
@@ -71,11 +74,16 @@ public class _ClassVisitor extends ClassVisitor {
 		return new _MethodVisitor();
 	}
 	
-	void log(String key, Object value) {
-		log(key + " = " + value);
+	@Override
+	public void visitEnd() {
+		log("---ClassVisitor-visitEnd---");
 	}
 	
-	void log(Object obj) {
-		System.out.println(obj);
+	void log(String key, Object value) {
+		System.out.println(key + " = " + value);
+	}
+	
+	void log(String str) {
+		System.out.println(str + version + "--");
 	}
 }

@@ -9,20 +9,23 @@ import org.springframework.asm.Opcodes;
  */
 public class _AnnotationVisitor extends AnnotationVisitor {
 
+	private int version;
+	
 	public _AnnotationVisitor() {
 		super(Opcodes.ASM7);
+		this.version = _AsmMain.getAvVersion();
 	}
 	
 	@Override
 	public void visit(String name, Object value) {
-		log("-AnnotationVisitor-visit-");
+		log("---AnnotationVisitor-visit---");
 		log("name", name);
 		log("value", value);
 	}
 	
 	@Override
 	public void visitEnum(String name, String descriptor, String value) {
-		log("-AnnotationVisitor-visitEnum-");
+		log("---AnnotationVisitor-visitEnum---");
 		log("name", name);
 		log("descriptor", descriptor);
 		log("value", value);
@@ -30,24 +33,29 @@ public class _AnnotationVisitor extends AnnotationVisitor {
 	
 	@Override
 	public AnnotationVisitor visitAnnotation(String name, String descriptor) {
-		log("-AnnotationVisitor-visitAnnotation-");
+		log("---AnnotationVisitor-visitAnnotation---");
 		log("name", name);
 		log("descriptor", descriptor);
-		return this;
+		return new _AnnotationVisitor();
 	}
 	
 	@Override
 	public AnnotationVisitor visitArray(String name) {
-		log("-AnnotationVisitor-visitArray-");
+		log("---AnnotationVisitor-visitArray---");
 		log("name", name);
-		return this;
+		return new _AnnotationVisitor();
+	}
+	
+	@Override
+	public void visitEnd() {
+		log("---AnnotationVisitor-visitEnd---");
 	}
 	
 	void log(String key, Object value) {
-		log(key + " = " + value);
+		System.out.println(key + " = " + value);
 	}
 	
-	void log(Object obj) {
-		System.out.println(obj);
+	void log(String str) {
+		System.out.println(str + version + "--");
 	}
 }
