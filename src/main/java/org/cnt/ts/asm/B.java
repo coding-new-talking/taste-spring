@@ -6,4 +6,5 @@ package org.cnt.ts.asm;
  */
 interface B extends Y {
 
+	double getDouble(double d);
 }
