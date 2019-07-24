@@ -8,6 +8,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
+import org.cnt.ts.asm.ann.Ann0;
+import org.cnt.ts.asm.ann.Ann1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,7 +25,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 @ComponentScan(basePackages = {"a.b.c", "x.y.z"},
 scopedProxy = ScopedProxyMode.DEFAULT,
 includeFilters = {@Filter(classes = Integer.class)})
-public class D<@Null T extends Number> extends C<@Valid Long, Date> implements A, B {
+@Ann0(ann1 = @Ann1(name = "ann1Name"))
+public class D<@Null T extends Number> extends C<@Valid Long, @NotNull Date> implements A, B {
 
 	protected Long lon = Long.MAX_VALUE;
 	
