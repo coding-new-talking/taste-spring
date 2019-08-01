@@ -1,5 +1,6 @@
 package org.cnt.ts;
 
+import org.cnt.ts.beanannotation.Ann2;
 import org.cnt.ts.beanannotation.BeanAnn;
 import org.cnt.ts.beandefinition.BeanDef;
 import org.springframework.boot.SpringApplication;
@@ -7,7 +8,8 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "org.cnt.ts")
+@Ann2
 public class TasteSpringApplication {
 
 	public static void main(String[] args) {
@@ -15,10 +17,10 @@ public class TasteSpringApplication {
 		SpringApplication sa = new SpringApplication(TasteSpringApplication.class);
 		sa.setWebApplicationType(WebApplicationType.NONE);
 		ConfigurableApplicationContext cac = sa.run(args);
-		//BeanDef bdf = new BeanDef(cac);
-		//bdf.showBeanDef();
+		BeanDef bdf = new BeanDef(cac);
+		bdf.showBeanDef();
 		BeanAnn ba = new BeanAnn(cac);
-		ba.showBeanAnnotation();
+		ba.showBeanAnn();
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.cnt.ts.bean.regfruitbd;
 
+import org.cnt.ts.beanannotation.Ann2;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @EnableFruit(fruit = "orange", weight = 5.6, color = "red")
 @Configuration
+@Ann2
 public class FruitConfig {
 
 }
