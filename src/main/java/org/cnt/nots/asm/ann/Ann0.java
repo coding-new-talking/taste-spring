@@ -1,4 +1,4 @@
-package org.cnt.ts.asm.ann;
+package org.cnt.nots.asm.ann;
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

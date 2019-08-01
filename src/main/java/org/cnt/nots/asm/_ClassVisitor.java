@@ -1,4 +1,4 @@
-package org.cnt.ts.asm;
+package org.cnt.nots.asm;
 
 import java.util.Arrays;
 

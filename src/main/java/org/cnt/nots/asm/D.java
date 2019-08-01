@@ -1,4 +1,4 @@
-package org.cnt.ts.asm;
+package org.cnt.nots.asm;
 
 import java.util.Date;
 import java.util.Map;
@@ -8,8 +8,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
-import org.cnt.ts.asm.ann.Ann0;
-import org.cnt.ts.asm.ann.Ann1;
+import org.cnt.nots.asm.ann.Ann0;
+import org.cnt.nots.asm.ann.Ann1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
