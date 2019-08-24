@@ -42,6 +42,8 @@ public class BeanDef {
 		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdObjects =>");
+		BeanDefinition tasteSpringApplicationBD = clbf.getBeanDefinition("tasteSpringApplication");
+		log.info("tasteSpringApplicationBD = {}, -> {}", tasteSpringApplicationBD, tasteSpringApplicationBD.getClass());
 		BeanDefinition bossBD = clbf.getBeanDefinition("boss");
 		log.info("bossBD = {}, -> {}", bossBD, bossBD.getClass());
 		BeanDefinition companyBD = clbf.getBeanDefinition("company");
