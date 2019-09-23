@@ -3,6 +3,7 @@ package org.cnt.ts;
 import org.cnt.ts.beanannotation.Ann2;
 import org.cnt.ts.beanannotation.BeanAnn;
 import org.cnt.ts.beandefinition.BeanDef;
+import org.cnt.ts.beanpp.BeanPP;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,16 @@ public class TasteSpringApplication {
 		bdf.showBeanDef();
 		BeanAnn ba = new BeanAnn(cac);
 		ba.showBeanAnn();
+		BeanPP bpp = new BeanPP(cac);
+		bpp.showBeanPP();
+		
+		synchronized (TasteSpringApplication.class) {
+			try {
+				TasteSpringApplication.class.wait();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
