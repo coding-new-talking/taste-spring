@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.StandardAnnotationMetadata;
@@ -36,7 +35,7 @@ public class BeanAnn {
 	}
 	
 	public void showBeanAnnotation() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("ab1");
@@ -50,7 +49,7 @@ public class BeanAnn {
 	}
 	
 	public void showSpringApplication1() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("tasteSpringApplication");
@@ -64,7 +63,7 @@ public class BeanAnn {
 	}
 	
 	public void showSpringApplication2() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("tasteSpringApplication");
@@ -78,7 +77,7 @@ public class BeanAnn {
 	}
 	
 	public void showFruitConfig() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("fruitConfig");
@@ -92,7 +91,7 @@ public class BeanAnn {
 	}
 	
 	public void showOrangeFrwk() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("org.cnt.ts.bean.regfruitbd.OrangeFrwk");
@@ -106,7 +105,7 @@ public class BeanAnn {
 	}
 	
 	public void showStandardAnnotationMetadata() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bean = (AnnotatedBeanDefinition)clbf.getBeanDefinition("annBean");

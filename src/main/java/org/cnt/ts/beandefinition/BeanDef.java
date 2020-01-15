@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +38,7 @@ public class BeanDef {
 	}
 	
 	public void showBeanDefObject() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdObjects =>");
 		BeanDefinition tasteSpringApplicationBD = clbf.getBeanDefinition("tasteSpringApplication");
@@ -58,7 +57,7 @@ public class BeanDef {
 	}
 	
 	public void showBeanAnnotation() {
-		AnnotationConfigApplicationContext acac = (AnnotationConfigApplicationContext)cac;
+		ConfigurableApplicationContext acac = (ConfigurableApplicationContext)cac;
 		ConfigurableListableBeanFactory clbf = acac.getBeanFactory();
 		log.info("bdAnnotation =>");
 		AnnotatedBeanDefinition bossBD = (AnnotatedBeanDefinition)clbf.getBeanDefinition("boss");

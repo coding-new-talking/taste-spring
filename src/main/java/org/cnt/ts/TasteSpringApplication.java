@@ -16,7 +16,7 @@ public class TasteSpringApplication {
 	public static void main(String[] args) {
 		//SpringApplication.run(TasteSpringApplication.class, args);
 		SpringApplication sa = new SpringApplication(TasteSpringApplication.class);
-		sa.setWebApplicationType(WebApplicationType.NONE);
+		//sa.setWebApplicationType(WebApplicationType.NONE);
 		ConfigurableApplicationContext cac = sa.run(args);
 		BeanDef bdf = new BeanDef(cac);
 		bdf.showBeanDef();
