@@ -4,8 +4,8 @@ import org.cnt.ts.beanannotation.Ann2;
 import org.cnt.ts.beanannotation.BeanAnn;
 import org.cnt.ts.beandefinition.BeanDef;
 import org.cnt.ts.beanpp.BeanPP;
+import org.cnt.ts.handlermapping.HandlerMappingShow;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -24,7 +24,8 @@ public class TasteSpringApplication {
 		ba.showBeanAnn();
 		BeanPP bpp = new BeanPP(cac);
 		bpp.showBeanPP();
-		
+		HandlerMappingShow hms = new HandlerMappingShow(cac);
+		hms.show();
 		synchronized (TasteSpringApplication.class) {
 			try {
 				TasteSpringApplication.class.wait();
